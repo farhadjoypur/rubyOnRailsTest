@@ -1,0 +1,57 @@
+<div class="col-md-10 mx-auto row">
+<div class="col-md-3 mt-5 ">
+<!-- Display Validation Errors -->
+<% if @validation_errors %>
+  <div class="alert alert-danger">
+    <h2>Validation Errors</h2>
+    <ul>
+      <% @validation_errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<% if @total_rows %>
+  <h2>Import Summary</h2>
+  <p>Total Rows: <%= @total_rows %></p>
+  <p>Successful Rows: <%= @successful_rows %></p>
+  <p>Failed Rows: <%= @failed_rows %></p>
+
+  <% if @failed_rows.to_i > 0 %>
+    <h3>Failure Reasons</h3>
+    <ul>
+      <% @failure_reasons.each do |reason| %>
+        <li><%= reason %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>
+</div>
+<div class="col-md-9 mt-5">
+<div class="card">
+<div class="card-header text-center">Users</div>
+<div class="card-body">
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th class="">FIRST_NAME</th>
+      <th>LAST_NAME</th>
+      <th>EMAIL_ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.FIRST_NAME %></td>
+        <td><%= user.LAST_NAME %></td>
+        <td><%= user.EMAIL_ID %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+
+</div>
+
